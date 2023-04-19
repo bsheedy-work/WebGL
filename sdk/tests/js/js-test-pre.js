@@ -98,6 +98,14 @@ const RESULTS = {
 const locationPathname = window.location.pathname;
 const webglTestHarness = window.parent.webglTestHarness;
 
+function startTest(testFunction, ...args) {
+  if (webglTestHarness !== undefined && webglTestHarness.registerTest !== undefined) {
+    webglTestHarness.registerTest(testFunction, args);
+  } else {
+    testFunction(...args);
+  }
+}
+
 function reportTestResultsToHarness(success, msg) {
   if (success) {
     RESULTS.pass += 1;

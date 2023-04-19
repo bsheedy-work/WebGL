@@ -137,7 +137,7 @@ function setupTests(gl) {
     return tests;
 };
 
-function testUniformOptimizationIssues(test) {
+function testUniformOptimizationIssues(gl, test) {
     debug("");
     debug(test.desc);
     var fshader = test.source;
@@ -227,7 +227,7 @@ function testUniformOptimizationIssues(test) {
 }
 
 function runOneTest(gl, test) {
-    testUniformOptimizationIssues(test);
+    testUniformOptimizationIssues(gl, test);
 };
 
 function runTests(gl, tests) {

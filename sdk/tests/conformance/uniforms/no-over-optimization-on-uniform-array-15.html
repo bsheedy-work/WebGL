@@ -14,26 +14,30 @@ found in the LICENSE.txt file.
 <script src="../../js/webgl-test-utils.js"></script>
 <script src="../../js/tests/no-over-optimizations-on-uniform-array.js"></script>
 </head>
-<body>
+<body onload="startTest(init)">
 <div id="description"></div>
 <div id="console"></div>
 <canvas id="example" width="2" height="2"> </canvas>
 <script>
 "use strict";
-description();
-debug("");
 
-var wtu = WebGLTestUtils;
-var gl = wtu.create3DContext("example");
-var testIndex = 15;
-var testSet = NoOverOptimizeOnUniformArrayTester.setupTests(gl);
-var testCases = [testSet[testIndex]];
+var wtu;
 
-NoOverOptimizeOnUniformArrayTester.runTests(gl, testCases)
-wtu.glErrorShouldBe(gl, gl.NO_ERROR, "there should be no errors");
+function init() {
+  description();
+  debug("");
 
-var successfullyParsed = true;
+  wtu = WebGLTestUtils;
+  var gl = wtu.create3DContext("example");
+  var testIndex = 15;
+  var testSet = NoOverOptimizeOnUniformArrayTester.setupTests(gl);
+  var testCases = [testSet[testIndex]];
+
+  NoOverOptimizeOnUniformArrayTester.runTests(gl, testCases)
+  wtu.glErrorShouldBe(gl, gl.NO_ERROR, "there should be no errors");
+  finishTest();
+}
+
 </script>
-<script src="../../js/js-test-post.js"></script>
 </body>
 </html>
